@@ -1,0 +1,76 @@
+{
+  "books": [
+    {
+      "id": "amadis",
+      "title": "Amadís de Gaula",
+      "author": "Garci Rodríguez de Montalvo",
+      "year": "1508",
+      "coverColor": "#8B4513",
+      "literaryInfluence": "The archetypal chivalric romance that established the template for wandering knights. Amadís embodied perfect chivalry: supernatural strength, unwavering loyalty, and pure love for Oriana. This bestseller shaped an entire generation's understanding of knightly virtue.",
+      "realWorldConsequence": "By Cervantes's time, the feudal knightly class had become obsolete. Gunpowder, professional armies, and centralized monarchies rendered mounted warriors anachronistic. The romanticized ideals of Amadís stood in stark contrast to the economic collapse and mass poverty of late 16th-century Spain."
+    },
+    {
+      "id": "palmerin",
+      "title": "Palmerín de Inglaterra",
+      "author": "Francisco de Moraes",
+      "year": "1547",
+      "coverColor": "#2E5C8A",
+      "literaryInfluence": "One of the few chivalric romances that even Cervantes praised. Featured elaborate quests, enchanted castles, and a knight who never wavered in honor. Don Quixote explicitly mentions this work as worthy of preservation from his library's burning.",
+      "realWorldConsequence": "While knights like Palmerín conquered imaginary kingdoms, real Spain faced the disastrous defeat of the Armada (1588) and mounting debts from endless wars. The gap between chivalric fantasy and imperial reality could not have been wider."
+    },
+    {
+      "id": "tirant",
+      "title": "Tirant lo Blanch",
+      "author": "Joanot Martorell",
+      "year": "1490",
+      "coverColor": "#DC143C",
+      "literaryInfluence": "A Catalan romance that mixed realistic battle tactics with fantastical adventures. Tirant was a more complex hero—strategic, political, sometimes failing. Cervantes called it 'the best book in the world' for its innovative realism within the chivalric genre.",
+      "realWorldConsequence": "The military innovations that made Tirant interesting (gunpowder, naval warfare, siege tactics) were the very technologies making medieval knights extinct. The book inadvertently chronicled the death of the world it celebrated."
+    },
+    {
+      "id": "belianis",
+      "title": "Belianís de Grecia",
+      "author": "Jerónimo Fernández",
+      "year": "1547",
+      "coverColor": "#4B0082",
+      "literaryInfluence": "An outrageously fantastical romance full of impossible feats and supernatural occurrences. In Don Quixote's library examination (Chapter 6), this book is condemned for its absurdities—yet Quixote secretly loved such wild tales.",
+      "realWorldConsequence": "The increasingly baroque fantasy of later chivalric romances reflected escapism from Spain's grim reality: the Inquisition's persecution, economic stagnation, and the crushing weight of failed imperial ambitions."
+    },
+    {
+      "id": "esplandian",
+      "title": "Las Sergas de Esplandián",
+      "author": "Garci Rodríguez de Montalvo",
+      "year": "1510",
+      "coverColor": "#FFD700",
+      "literaryInfluence": "The sequel to Amadís, introducing his son Esplandián. Featured the island of California ruled by Queen Calafia—this book literally gave California its name. Blended Christian crusading zeal with chivalric adventure.",
+      "realWorldConsequence": "Published just after Columbus's voyages, this romance fed conquistadors' fantasies of finding enchanted kingdoms in the Americas. The brutal reality of colonial extraction and indigenous genocide bore no resemblance to Esplandián's honorable quests."
+    },
+    {
+      "id": "olivante",
+      "title": "Olivante de Laura",
+      "author": "Antonio de Torquemada",
+      "year": "1564",
+      "coverColor": "#228B22",
+      "literaryInfluence": "A late chivalric romance featuring increasingly implausible adventures. Don Quixote's library contains this work, representing the genre's descent into self-parody. Filled with giants, enchanters, and impossible feats that strained even sympathetic readers' credulity.",
+      "realWorldConsequence": "Published during the Council of Trent and Counter-Reformation, when Spain's religious authorities demanded moral seriousness. Such frivolous fantasies were seen as corrupting—yet they remained wildly popular among a population seeking escape from religious oppression."
+    },
+    {
+      "id": "florisando",
+      "title": "Florisando",
+      "author": "Páez de Ribera",
+      "year": "1510",
+      "coverColor": "#8B008B",
+      "literaryInfluence": "Part of the Amadís cycle, chronicling further adventures of Amadís's descendants. Exemplified the endless continuation and commercialization of successful chivalric franchises—the 16th century equivalent of modern sequels and spin-offs.",
+      "realWorldConsequence": "While these romances churned out profitable fantasies for publishers, real Spain faced catastrophic inflation from New World gold flooding the market. Printing presses produced escapist fiction while the economy collapsed."
+    },
+    {
+      "id": "felixmarte",
+      "title": "Felixmarte de Hircania",
+      "author": "Melchor Ortega",
+      "year": "1556",
+      "coverColor": "#CD853F",
+      "literaryInfluence": "One of the most convoluted chivalric romances, with labyrinthine plots and excessive supernatural interventions. In Don Quixote, the priest specifically condemns this work to the flames for its 'ariditez' (aridity) and lack of imagination within excess.",
+      "realWorldConsequence": "Published the same year Charles V abdicated his throne, exhausted from trying to maintain the Hapsburg empire. The disconnection between chivalric virtue and actual governance had never been clearer."
+    }
+  ]
+}

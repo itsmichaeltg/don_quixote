@@ -1,0 +1,58 @@
+{
+  "events": [
+    {
+      "id": "lazarillo",
+      "year": 1554,
+      "title": "The Rise of the Picaresque Novel",
+      "category": "literature",
+      "truthDescription": "The publication of Lazarillo de Tormes introduced \"anti-heroes\"—low-born rogues (pícaros) struggling to survive.",
+      "dareDescription": "Don Quixote is a dialogue between the old Chivalric tradition (high-born heroes) and the new Picaresque tradition (low-born realism). Sancho Panza serves as the grounded, cynical foil to Quixote's lofty idealism.",
+      "significance": "Don Quixote is a dialogue between the old Chivalric tradition (high-born heroes) and the new Picaresque tradition (low-born realism). Sancho Panza serves as the grounded, cynical foil to Quixote's lofty idealism."
+    },
+    {
+      "id": "philip-ii",
+      "year": 1556,
+      "title": "The Reign of Philip II & The Counter-Reformation",
+      "category": "politics",
+      "truthDescription": "Spain was the champion of Catholicism, characterized by strict religious orthodoxy and the Inquisition. The atmosphere of censorship is felt throughout the novel. When the priest and barber \"purge\" Quixote's library, it is a direct satire of the Inquisition's Index of Prohibited Books. Quixote's \"madness\" served as a mask that allowed Cervantes to comment on a rigid society safely.",
+      "dareDescription": "Spain stood as the defender of the true faith, with Philip II leading the Counter-Reformation against Protestant heresy. The Inquisition protected the purity of Catholic doctrine.",
+      "significance": "The atmosphere of censorship is felt throughout the novel. When the priest and barber \"purge\" Quixote's library, it is a direct satire of the Inquisition's Index of Prohibited Books. Quixote's \"madness\" served as a mask that allowed Cervantes to comment on a rigid society safely."
+    },
+    {
+      "id": "lepanto",
+      "year": 1571,
+      "title": "The Battle of Lepanto",
+      "category": "war",
+      "truthDescription": "This was a massive naval battle between the Holy League and the Ottoman Empire. Miguel de Cervantes fought in this battle and lost the use of his left hand. The \"Soldier's Tale\" within the novel mirrors his own experiences of war and capture, contrasting sharply with the idealized, bloodless battles found in chivalric romances.",
+      "dareDescription": "The Holy League achieved a glorious victory against the Ottoman Empire, with brave soldiers like Cervantes defending Christendom in honorable combat.",
+      "significance": "Miguel de Cervantes fought in this battle and lost the use of his left hand. The \"Soldier's Tale\" within the novel mirrors his own experiences of war and capture, contrasting sharply with the idealized, bloodless battles found in chivalric romances."
+    },
+    {
+      "id": "armada",
+      "year": 1588,
+      "title": "The Defeat of the Spanish Armada",
+      "category": "war",
+      "truthDescription": "The destruction of Spain's \"Invincible\" fleet by England and North Sea storms marked a turning point in Spanish power. This sparked a national shift from imperial confidence to desengaño (disillusionment). Quixote's frequent defeats—expecting glory but receiving beatings—parallel the bruised ego of the declining Spanish Empire.",
+      "dareDescription": "Though the Armada faced setbacks from storms and English tactics, the spirit of Spanish maritime power remained undiminished in the hearts of its people.",
+      "significance": "This sparked a national shift from imperial confidence to desengaño (disillusionment). Quixote's frequent defeats—expecting glory but receiving beatings—parallel the bruised ego of the declining Spanish Empire."
+    },
+    {
+      "id": "price-revolution",
+      "year": 1590,
+      "title": "Economic Inflation and the \"Price Revolution\"",
+      "category": "economy",
+      "truthDescription": "The influx of silver from the Americas devalued currency and crippled domestic industry, leading to widespread poverty. This explains the gritty setting. Quixote wanders through a landscape of dusty inns and bankrupt gentry. His noble fantasies are constantly interrupted by the harsh economic reality of a country that was \"rich\" in silver but poor in stability.",
+      "dareDescription": "The wealth from the New World flowed into Spain, testament to the empire's vast reach and divine favor, enriching the nation with precious metals.",
+      "significance": "This explains the gritty setting. Quixote wanders through a landscape of dusty inns and bankrupt gentry. His noble fantasies are constantly interrupted by the harsh economic reality of a country that was \"rich\" in silver but poor in stability."
+    },
+    {
+      "id": "moriscos",
+      "year": 1609,
+      "title": "The Expulsion of the Moriscos",
+      "category": "politics",
+      "truthDescription": "King Philip III ordered the mass deportation of the Moriscos (Muslims who had converted to Christianity). This is explicitly addressed via the character Ricote, a Morisco neighbor of Sancho Panza. Cervantes treats Ricote with empathy, highlighting the human cost of state-mandated exile and the complexity of Spanish identity.",
+      "dareDescription": "Spain completed its religious purification, ensuring the nation remained purely Catholic and free from the influence of former Muslim converts.",
+      "significance": "This is explicitly addressed via the character Ricote, a Morisco neighbor of Sancho Panza. Cervantes treats Ricote with empathy, highlighting the human cost of state-mandated exile and the complexity of Spanish identity."
+    }
+  ]
+}
