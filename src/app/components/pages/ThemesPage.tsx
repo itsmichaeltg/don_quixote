@@ -1,69 +1,79 @@
+import { Link } from 'react-router';
 import { motion } from 'motion/react';
+import { ArrowLeft, BookOpen, ExternalLink } from 'lucide-react';
+import { Button } from '../ui/button';
 import { ThemesCard } from '../interactive/ThemesCard';
+
+const sources = [
+  {
+    label: 'Don Quixote, Part I, Chapters 6-8',
+    href: 'https://www.gutenberg.org/files/5921/old/orig5921-h/p3.htm',
+  },
+  {
+    label: 'Library of Congress: Don Quixote first edition',
+    href: 'https://www.loc.gov/item/2021666762/',
+  },
+  {
+    label: 'Britannica: Miguel de Cervantes',
+    href: 'https://www.britannica.com/biography/Miguel-de-Cervantes',
+  },
+];
 
 export function ThemesPage() {
   return (
-    <div className="min-h-screen py-20 px-6" style={{ backgroundColor: '#FDFBF7' }}>
-      <motion.div
-        className="max-w-4xl mx-auto"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6 }}
-      >
-        <div className="text-center mb-16">
-          <motion.h1
-            className="text-6xl font-bold mb-4"
-            style={{
-              fontFamily: 'Playfair Display, serif',
-              color: '#1A1A1A',
-            }}
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-          >
-            Thematic Exploration
-          </motion.h1>
-          <motion.p
-            className="text-xl"
-            style={{ color: '#666' }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-          >
-            Choose your perspective and dive into the philosophical heart of Don
-            Quixote
-          </motion.p>
-        </div>
+    <main className="min-h-screen overflow-x-hidden px-6 py-24 sm:py-28">
+      <div className="mx-auto max-w-7xl">
+        <motion.div
+          initial={{ opacity: 0, x: -16 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.4 }}
+        >
+          <Button asChild variant="ghost" size="lg" className="mb-8 gap-2">
+            <Link to="/">
+              <ArrowLeft className="h-4 w-4" />
+              Home
+            </Link>
+          </Button>
+        </motion.div>
+
+        <motion.header
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.55 }}
+          className="mb-10 grid gap-8 lg:grid-cols-[0.78fr_1.22fr]"
+        >
+          <div>
+            <p className="flex items-center gap-2 text-sm font-semibold text-primary">
+              <BookOpen className="h-4 w-4" />
+              Theme
+            </p>
+            <h1 className="mt-3 text-3xl font-semibold sm:text-6xl">The tilt of reality</h1>
+          </div>
+          <p className="max-w-3xl text-lg leading-relaxed text-muted-foreground">
+            Don Quixote is not a simple argument between madness and sanity. It is a pressure test for perception, class, justice, authorship, and the strange social power of stories.
+          </p>
+        </motion.header>
 
         <ThemesCard />
 
-        <motion.div
-          className="mt-20 p-8 rounded-lg border-2 border-gray-200"
-          style={{ backgroundColor: '#FFF' }}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, duration: 0.6 }}
-        >
-          <h2
-            className="text-2xl font-bold mb-4"
-            style={{
-              fontFamily: 'Playfair Display, serif',
-              color: '#1A1A1A',
-            }}
-          >
-            About This Component
-          </h2>
-          <p className="text-base leading-relaxed" style={{ color: '#333' }}>
-            This interactive Themes card presents the philosophical core of
-            Cervantes' masterpiece through two distinct lenses: the idealism of
-            Don Quixote and the realism of Sancho Panza. Use the slider to shift
-            perspectives and watch how the interpretation of each theme
-            transforms. Expand each theme to explore the deep philosophical
-            tensions that make Don Quixote not just a novel, but a meditation on
-            truth, perception, and human nature.
-          </p>
-        </motion.div>
-      </motion.div>
-    </div>
+        <section className="mt-12 rounded-lg border bg-card p-5">
+          <p className="text-sm font-semibold text-primary">Source trail</p>
+          <div className="mt-3 flex flex-wrap gap-3">
+            {sources.map((source) => (
+              <a
+                key={source.href}
+                href={source.href}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-lg border bg-background px-3 py-2 text-sm text-muted-foreground transition hover:text-foreground"
+              >
+                {source.label}
+                <ExternalLink className="h-3.5 w-3.5" />
+              </a>
+            ))}
+          </div>
+        </section>
+      </div>
+    </main>
   );
 }

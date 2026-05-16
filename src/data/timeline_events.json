@@ -3,56 +3,102 @@
     {
       "id": "lazarillo",
       "year": 1554,
-      "title": "The Rise of the Picaresque Novel",
+      "displayDate": "1554",
+      "title": "Lazarillo de Tormes and the picaresque",
       "category": "literature",
-      "truthDescription": "The publication of Lazarillo de Tormes introduced \"anti-heroes\"—low-born rogues (pícaros) struggling to survive.",
-      "dareDescription": "Don Quixote is a dialogue between the old Chivalric tradition (high-born heroes) and the new Picaresque tradition (low-born realism). Sancho Panza serves as the grounded, cynical foil to Quixote's lofty idealism.",
-      "significance": "Don Quixote is a dialogue between the old Chivalric tradition (high-born heroes) and the new Picaresque tradition (low-born realism). Sancho Panza serves as the grounded, cynical foil to Quixote's lofty idealism."
+      "truthDescription": "The anonymous Lazarillo de Tormes made a low-born survivor, not a perfect knight, the center of a sharp first-person story. Britannica identifies it as the original picaresque novel.",
+      "dareDescription": "For Don Quixote, this new realism is the rival genre waiting in the road: hunger, tricks, servants, and survival keep interrupting heroic language.",
+      "significance": "Sancho's appetite, bargaining, and earthy speech help Cervantes put chivalric fantasy into conversation with picaresque realism."
     },
     {
       "id": "philip-ii",
       "year": 1556,
-      "title": "The Reign of Philip II & The Counter-Reformation",
+      "displayDate": "1556-1598",
+      "title": "Philip II and Counter-Reformation Spain",
       "category": "politics",
-      "truthDescription": "Spain was the champion of Catholicism, characterized by strict religious orthodoxy and the Inquisition. The atmosphere of censorship is felt throughout the novel. When the priest and barber \"purge\" Quixote's library, it is a direct satire of the Inquisition's Index of Prohibited Books. Quixote's \"madness\" served as a mask that allowed Cervantes to comment on a rigid society safely.",
-      "dareDescription": "Spain stood as the defender of the true faith, with Philip II leading the Counter-Reformation against Protestant heresy. The Inquisition protected the purity of Catholic doctrine.",
-      "significance": "The atmosphere of censorship is felt throughout the novel. When the priest and barber \"purge\" Quixote's library, it is a direct satire of the Inquisition's Index of Prohibited Books. Quixote's \"madness\" served as a mask that allowed Cervantes to comment on a rigid society safely."
+      "truthDescription": "Philip II's reign intensified Spain's role as a Catholic imperial power. Religious policing, censorship, and war shaped the atmosphere in which books could be admired, feared, regulated, and burned.",
+      "dareDescription": "From a heroic view, Spain imagined itself as defender of the faith, a stage large enough for crusading language and knightly postures.",
+      "significance": "The library scrutiny in Part I, Chapter 6 turns religious and political habits of censorship into a comic literary trial."
     },
     {
       "id": "lepanto",
       "year": 1571,
+      "displayDate": "1571",
       "title": "The Battle of Lepanto",
       "category": "war",
-      "truthDescription": "This was a massive naval battle between the Holy League and the Ottoman Empire. Miguel de Cervantes fought in this battle and lost the use of his left hand. The \"Soldier's Tale\" within the novel mirrors his own experiences of war and capture, contrasting sharply with the idealized, bloodless battles found in chivalric romances.",
-      "dareDescription": "The Holy League achieved a glorious victory against the Ottoman Empire, with brave soldiers like Cervantes defending Christendom in honorable combat.",
-      "significance": "Miguel de Cervantes fought in this battle and lost the use of his left hand. The \"Soldier's Tale\" within the novel mirrors his own experiences of war and capture, contrasting sharply with the idealized, bloodless battles found in chivalric romances."
+      "truthDescription": "Cervantes fought at Lepanto on October 7, 1571. Britannica notes that he received two gunshot wounds in the chest and a third that left his left hand useless.",
+      "dareDescription": "Lepanto could be remembered as heroic Christian combat against Ottoman power, the kind of glory Don Quixote believes still structures the world.",
+      "significance": "Cervantes knew real battle wounds. That experience gives special force to the novel's comedy of imagined combat and actual pain."
     },
     {
       "id": "armada",
       "year": 1588,
-      "title": "The Defeat of the Spanish Armada",
+      "displayDate": "1588",
+      "title": "The Spanish Armada fails",
       "category": "war",
-      "truthDescription": "The destruction of Spain's \"Invincible\" fleet by England and North Sea storms marked a turning point in Spanish power. This sparked a national shift from imperial confidence to desengaño (disillusionment). Quixote's frequent defeats—expecting glory but receiving beatings—parallel the bruised ego of the declining Spanish Empire.",
-      "dareDescription": "Though the Armada faced setbacks from storms and English tactics, the spirit of Spanish maritime power remained undiminished in the hearts of its people.",
-      "significance": "This sparked a national shift from imperial confidence to desengaño (disillusionment). Quixote's frequent defeats—expecting glory but receiving beatings—parallel the bruised ego of the declining Spanish Empire."
+      "truthDescription": "The Armada sent by Philip II to invade England failed in 1588. Britannica describes the campaign as a failed Spanish enterprise that spared England and the Netherlands from absorption into the Spanish empire.",
+      "dareDescription": "Imperial rhetoric could still frame defeat as trial, storm, and honorable endurance.",
+      "significance": "Don Quixote's repeated falls echo a larger culture learning that confident scripts do not guarantee victory."
     },
     {
       "id": "price-revolution",
       "year": 1590,
-      "title": "Economic Inflation and the \"Price Revolution\"",
+      "displayDate": "c. 1550-1600",
+      "title": "American silver and the Price Revolution",
       "category": "economy",
-      "truthDescription": "The influx of silver from the Americas devalued currency and crippled domestic industry, leading to widespread poverty. This explains the gritty setting. Quixote wanders through a landscape of dusty inns and bankrupt gentry. His noble fantasies are constantly interrupted by the harsh economic reality of a country that was \"rich\" in silver but poor in stability.",
-      "dareDescription": "The wealth from the New World flowed into Spain, testament to the empire's vast reach and divine favor, enriching the nation with precious metals.",
-      "significance": "This explains the gritty setting. Quixote wanders through a landscape of dusty inns and bankrupt gentry. His noble fantasies are constantly interrupted by the harsh economic reality of a country that was \"rich\" in silver but poor in stability."
+      "truthDescription": "Sixteenth-century American silver aggravated inflation in Spain, and much treasure went to court display, imports, armies, and creditors rather than productive investment.",
+      "dareDescription": "The empire could look rich in metals and poor in stability at the same time: a perfect backdrop for a hidalgo rich in fantasy and poor in cash.",
+      "significance": "The novel's inns, wages, food, debts, and battered bodies matter because the fantasy unfolds in a material economy."
+    },
+    {
+      "id": "part-one",
+      "year": 1605,
+      "displayDate": "1605",
+      "title": "Don Quixote Part I is published",
+      "category": "literature",
+      "truthDescription": "The first volume was printed in Madrid by Juan de la Cuesta and appeared in January 1605 after Francisco de Robles bought the publishing rights.",
+      "dareDescription": "The would-be knight immediately became a public figure. The world began reading the man who had lost himself by reading.",
+      "significance": "Part II will turn this publication into plot: characters inside the fiction know Part I exists."
     },
     {
       "id": "moriscos",
       "year": 1609,
-      "title": "The Expulsion of the Moriscos",
+      "displayDate": "1609-1614",
+      "title": "The expulsion of the Moriscos",
       "category": "politics",
-      "truthDescription": "King Philip III ordered the mass deportation of the Moriscos (Muslims who had converted to Christianity). This is explicitly addressed via the character Ricote, a Morisco neighbor of Sancho Panza. Cervantes treats Ricote with empathy, highlighting the human cost of state-mandated exile and the complexity of Spanish identity.",
-      "dareDescription": "Spain completed its religious purification, ensuring the nation remained purely Catholic and free from the influence of former Muslim converts.",
-      "significance": "This is explicitly addressed via the character Ricote, a Morisco neighbor of Sancho Panza. Cervantes treats Ricote with empathy, highlighting the human cost of state-mandated exile and the complexity of Spanish identity."
+      "truthDescription": "Philip III's government ordered the expulsion of the Moriscos in 1609; by 1614 roughly 275,000 had been forced to leave Spain, according to Britannica.",
+      "dareDescription": "Official language framed the policy as purification and security, but the human cost kept returning through exile, loss, and divided belonging.",
+      "significance": "Part II includes Ricote, Sancho's Morisco neighbor, making a current political trauma part of the novel's moral landscape."
+    },
+    {
+      "id": "avellaneda",
+      "year": 1614,
+      "displayDate": "1614",
+      "title": "The false sequel appears",
+      "category": "literature",
+      "truthDescription": "An unauthorized continuation of Don Quixote appeared under the name Alonso Fernández de Avellaneda before Cervantes's own Part II.",
+      "dareDescription": "Even the hero's identity becomes contested territory: other writers try to seize the adventure and redirect the legend.",
+      "significance": "Cervantes answers the false sequel inside Part II, making authorship, reputation, and readerly ownership part of the story."
+    },
+    {
+      "id": "part-two",
+      "year": 1615,
+      "displayDate": "1615",
+      "title": "Don Quixote Part II is published",
+      "category": "literature",
+      "truthDescription": "The second volume appeared in 1615, ten years after Part I. The Library of Congress notes the second volume's appearance a decade after the first.",
+      "dareDescription": "The sequel lets Don Quixote walk through a world that has already read him, turning fame itself into an enchantment.",
+      "significance": "Part II makes the novel astonishingly modern: characters discuss the book they are inside, and the boundary between life and print keeps collapsing."
+    },
+    {
+      "id": "cervantes-death",
+      "year": 1616,
+      "displayDate": "1616",
+      "title": "Cervantes dies in Madrid",
+      "category": "life",
+      "truthDescription": "Cervantes died in Madrid in April 1616, the year after Part II appeared.",
+      "dareDescription": "The author exits, but the knight and squire keep riding through editions, translations, art, theater, and classrooms.",
+      "significance": "The afterlife of Don Quixote is part of the point: a book about being possessed by books became one of the most durable books in world literature."
     }
   ]
 }

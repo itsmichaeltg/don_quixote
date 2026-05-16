@@ -1,12 +1,20 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
+import { Link } from 'react-router';
 import { motion } from 'motion/react';
-import { useViewMode } from '../../context/ViewModeContext';
+import {
+  ArrowLeft,
+  BookOpen,
+  ExternalLink,
+  Flame,
+  Gavel,
+  Library,
+  ShieldCheck,
+} from 'lucide-react';
+import { Button } from '../ui/button';
 import { BookshelfItem } from '../interactive/BookshelfItem';
 import { SanityCheckCard } from '../interactive/SanityCheckCard';
 import booksData from '../../../data/chivalric_books.json';
-import { Flame, ArrowLeft } from 'lucide-react';
-import { Link } from 'react-router';
-import { Button } from '../ui/button';
+import { useViewMode } from '../../context/ViewModeContext';
 
 interface Book {
   id: string;
@@ -14,146 +22,169 @@ interface Book {
   author: string;
   year: string;
   coverColor: string;
+  verdict: string;
+  dangerLevel: number;
+  chapterVerdict: string;
   literaryInfluence: string;
   realWorldConsequence: string;
+  readingQuestion: string;
+  sourceNote: string;
 }
+
+const verdictFilters = [
+  { id: 'all', label: 'All books', icon: Library },
+  { id: 'spared', label: 'Spared', icon: ShieldCheck },
+  { id: 'burned', label: 'Burned', icon: Flame },
+  { id: 'quarantined', label: 'Quarantined', icon: Gavel },
+];
+
+const sources = [
+  {
+    label: 'Part I, Chapter 6',
+    href: 'https://www.gutenberg.org/files/5921/old/orig5921-h/p3.htm',
+  },
+  {
+    label: 'Britannica: Amadís de Gaula',
+    href: 'https://www.britannica.com/topic/Amadis-of-Gaul',
+  },
+  {
+    label: 'Biblioteca Virtual Miguel de Cervantes: Tirant',
+    href: 'https://www.cervantesvirtual.com/obra-visor/tirant-lo-blanc--0/html/',
+  },
+  {
+    label: 'USC Dornsife: California name',
+    href: 'https://dornsife.usc.edu/magazine/how-california-got-its-name/',
+  },
+];
 
 export function LibraryOfMadness() {
   const { mode } = useViewMode();
-  const [selectedBook, setSelectedBook] = useState<Book | null>(null);
-
   const books = booksData.books as Book[];
+  const [selectedBook, setSelectedBook] = useState<Book | null>(null);
+  const [filter, setFilter] = useState('all');
+
+  const filteredBooks = useMemo(() => {
+    if (filter === 'all') return books;
+    return books.filter((book) => book.verdict.toLowerCase().includes(filter));
+  }, [books, filter]);
 
   return (
-    <div className="min-h-screen py-20 px-6">
-      <div className="max-w-7xl mx-auto">
-        {/* Back Button */}
-        <motion.div
-          className="mb-8"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.4 }}
-        >
+    <main className="min-h-screen overflow-x-hidden px-6 py-24 sm:py-28">
+      <div className="mx-auto max-w-7xl">
+        <Button asChild variant="ghost" size="lg" className="mb-8 gap-2">
           <Link to="/">
-            <Button variant="ghost" size="lg">
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Back to Home
-            </Button>
+            <ArrowLeft className="h-4 w-4" />
+            Home
           </Link>
-        </motion.div>
+        </Button>
 
-        {/* Header */}
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: -20 }}
+        <motion.header
+          className="mb-10 grid gap-8 lg:grid-cols-[0.78fr_1.22fr]"
+          initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.55 }}
         >
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <Flame className={`w-8 h-8 ${mode === 'truth' ? 'text-blood-red' : 'text-romance-rose'}`} />
-            <h1 className="text-5xl md:text-6xl">The Library of Madness</h1>
-            <Flame className={`w-8 h-8 ${mode === 'truth' ? 'text-blood-red' : 'text-romance-rose'}`} />
+          <div>
+            <p className="flex items-center gap-2 text-sm font-semibold text-primary">
+              <BookOpen className="h-4 w-4" />
+              Books
+            </p>
+            <h1 className="mt-3 text-3xl font-semibold sm:text-6xl">The library trial</h1>
           </div>
-          <p className="text-xl opacity-80 max-w-3xl mx-auto">
-            {mode === 'truth'
-              ? 'The books of chivalry that corrupted Don Quixote\'s mind—romantic fantasies in an age of harsh imperial reality'
-              : 'The glorious tales that inspired a hero to dream beyond the mundane world of merchants and peasants'}
+          <p className="max-w-3xl text-lg leading-relaxed text-muted-foreground">
+            Part I, Chapter 6 is a miniature literary court. The priest and barber judge the books that helped make Don Quixote, and Cervantes turns censorship into comedy, criticism, and confession.
           </p>
-        </motion.div>
+        </motion.header>
 
-        {/* Quote from Don Quixote */}
-        <motion.blockquote
-          className="text-center italic text-lg mb-12 max-w-2xl mx-auto p-6 bg-muted/30 rounded-lg border-l-4 border-primary"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3, duration: 0.6 }}
-        >
-          <p className="mb-2">
-            "...his brain dried up and he went completely out of his mind."
-          </p>
-          <footer className="text-sm opacity-70">— Don Quixote, Part I, Chapter 1</footer>
-        </motion.blockquote>
+        <section className="mb-6 flex flex-wrap gap-3">
+          {verdictFilters.map((item) => {
+            const Icon = item.icon;
+            const isActive = filter === item.id;
 
-        {/* Bookshelf Description */}
-        <motion.div
-          className="text-center mb-12"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4, duration: 0.6 }}
-        >
-          <p className="text-muted-foreground">
-            Click any book to trigger a <span className="font-medium text-accent">Sanity Check</span>
-          </p>
-        </motion.div>
+            return (
+              <button
+                key={item.id}
+                type="button"
+                onClick={() => setFilter(item.id)}
+                className={`inline-flex items-center gap-2 rounded-lg border px-4 py-3 font-semibold transition ${
+                  isActive
+                    ? 'border-primary bg-primary/15 text-foreground'
+                    : 'bg-card text-muted-foreground hover:bg-card/80'
+                }`}
+              >
+                <Icon className="h-4 w-4" />
+                {item.label}
+              </button>
+            );
+          })}
+        </section>
 
-        {/* The Bookshelf */}
-        <motion.div
-          className="relative"
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.5, duration: 0.6 }}
-        >
-          {/* Shelf Background */}
-          <div className={`relative p-8 rounded-xl ${
-            mode === 'truth'
-              ? 'bg-gradient-to-b from-woodcut-black/10 to-dusty-ochre/20'
-              : 'bg-gradient-to-b from-enchantment-purple/10 to-knight-azure/20'
-          }`}>
-            {/* Wooden Shelf Effect */}
-            <div className="absolute inset-x-0 bottom-0 h-3 bg-gradient-to-b from-transparent to-stone-gray/30 rounded-b-xl" />
+        <section className="relative rounded-lg border bg-card p-6 shadow-xl">
+          <div className={`absolute inset-x-0 bottom-0 h-5 rounded-b-lg ${
+            mode === 'truth' ? 'bg-[linear-gradient(180deg,rgba(23,20,17,0),rgba(23,20,17,0.22))]' : 'bg-[linear-gradient(180deg,rgba(248,241,230,0),rgba(229,184,79,0.2))]'
+          }`}
+          />
+          <div className="relative flex min-h-72 flex-wrap items-end justify-center gap-4 md:gap-5">
+            {filteredBooks.map((book, index) => (
+              <BookshelfItem
+                key={book.id}
+                title={book.title}
+                author={book.author}
+                coverColor={book.coverColor}
+                verdict={book.verdict}
+                dangerLevel={book.dangerLevel}
+                onClick={() => setSelectedBook(book)}
+                index={index}
+              />
+            ))}
+          </div>
+        </section>
 
-            {/* Books Grid */}
-            <div className="flex flex-wrap justify-center gap-4 md:gap-6">
-              {books.map((book, index) => (
-                <BookshelfItem
-                  key={book.id}
-                  title={book.title}
-                  author={book.author}
-                  coverColor={book.coverColor}
-                  onClick={() => setSelectedBook(book)}
-                  index={index}
-                />
-              ))}
+        <section className="mt-10 grid gap-5 lg:grid-cols-[0.8fr_1.2fr]">
+          <div className="rounded-lg border bg-card p-5">
+            <p className="flex items-center gap-2 text-sm font-semibold text-primary">
+              <Gavel className="h-4 w-4" />
+              What got cleaned up
+            </p>
+            <p className="mt-3 leading-relaxed text-muted-foreground">
+              The bookshelf now separates chapter verdicts from interpretation. It avoids treating every traditional claim as proven fact and keeps Cervantes’s actual joke in view: he saves some fantasies, burns others, and cannot resist judging style.
+            </p>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-3">
+            <div className="rounded-lg border bg-card p-5">
+              <p className="text-2xl font-semibold text-primary">8</p>
+              <p className="mt-2 text-sm text-muted-foreground">real chivalric books in the trial shelf</p>
+            </div>
+            <div className="rounded-lg border bg-card p-5">
+              <p className="text-2xl font-semibold text-primary">3</p>
+              <p className="mt-2 text-sm text-muted-foreground">possible outcomes: spared, burned, quarantined</p>
+            </div>
+            <div className="rounded-lg border bg-card p-5">
+              <p className="text-2xl font-semibold text-primary">1</p>
+              <p className="mt-2 text-sm text-muted-foreground">question: what should readers do with powerful stories?</p>
             </div>
           </div>
+        </section>
 
-          {/* Decorative Shadow */}
-          <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-3/4 h-8 bg-black/10 blur-xl rounded-full" />
-        </motion.div>
-
-        {/* Context Section */}
-        <motion.div
-          className="mt-20 max-w-4xl mx-auto space-y-8"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="p-8 bg-card rounded-xl border">
-            <h2 className="text-2xl mb-4">
-              {mode === 'truth' ? 'The Inquisition of the Books' : 'The Examination of Dreams'}
-            </h2>
-            <div className="space-y-4 text-muted-foreground leading-relaxed">
-              <p>
-                In Chapter 6 of Don Quixote, the priest and the barber conduct an "inquisition" of Quixote's
-                library while he sleeps. They examine each book of chivalry, debating which deserve to be
-                burned and which might be spared.
-              </p>
-              <p>
-                {mode === 'truth'
-                  ? 'This scene mirrors the Spanish Inquisition\'s book burnings—Cervantes transforms religious censorship into literary criticism. Just as the Inquisition sought to purge heretical ideas, the priest tries to cure Quixote by destroying the source of his delusions.'
-                  : 'Yet even as they condemn these books, the priest and barber cannot help but admire certain works. They recognize the power of stories to transport us beyond mundane reality—the very reason Quixote fell in love with them.'}
-              </p>
-              <p className="italic">
-                Each book here represents both literary influence and historical consequence—the dual
-                lens through which we must view Don Quixote's world.
-              </p>
-            </div>
+        <section className="mt-12 rounded-lg border bg-card p-5">
+          <p className="text-sm font-semibold text-primary">Source trail</p>
+          <div className="mt-3 flex flex-wrap gap-3">
+            {sources.map((source) => (
+              <a
+                key={source.href}
+                href={source.href}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-lg border bg-background px-3 py-2 text-sm text-muted-foreground transition hover:text-foreground"
+              >
+                {source.label}
+                <ExternalLink className="h-3.5 w-3.5" />
+              </a>
+            ))}
           </div>
-        </motion.div>
+        </section>
       </div>
 
-      {/* Sanity Check Modal */}
       {selectedBook && (
         <SanityCheckCard
           isOpen={!!selectedBook}
@@ -161,10 +192,15 @@ export function LibraryOfMadness() {
           bookTitle={selectedBook.title}
           author={selectedBook.author}
           year={selectedBook.year}
+          verdict={selectedBook.verdict}
+          chapterVerdict={selectedBook.chapterVerdict}
+          dangerLevel={selectedBook.dangerLevel}
           literaryInfluence={selectedBook.literaryInfluence}
           realWorldConsequence={selectedBook.realWorldConsequence}
+          readingQuestion={selectedBook.readingQuestion}
+          sourceNote={selectedBook.sourceNote}
         />
       )}
-    </div>
+    </main>
   );
 }

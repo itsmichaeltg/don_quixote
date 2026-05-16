@@ -1,257 +1,247 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { useViewMode } from '../../context/ViewModeContext';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card';
-import { Badge } from '../ui/badge';
-import { ArrowLeft, Scroll, Swords, Coins, BookOpen } from 'lucide-react';
+import { useMemo, useState } from 'react';
 import { Link } from 'react-router';
+import { motion, AnimatePresence } from 'motion/react';
+import {
+  ArrowLeft,
+  BookOpen,
+  CalendarDays,
+  Coins,
+  Cross,
+  ExternalLink,
+  Feather,
+  ScrollText,
+  Shield,
+  Swords,
+} from 'lucide-react';
 import { Button } from '../ui/button';
+import { Badge } from '../ui/badge';
 import timelineData from '../../../data/timeline_events.json';
+import { useViewMode } from '../../context/ViewModeContext';
 
 interface TimelineEvent {
   id: string;
   year: number;
+  displayDate: string;
   title: string;
-  category: 'literature' | 'politics' | 'war' | 'economy';
+  category: 'literature' | 'politics' | 'war' | 'economy' | 'life';
   truthDescription: string;
   dareDescription: string;
   significance: string;
 }
 
 const categoryConfig = {
-  literature: { icon: BookOpen, color: 'bg-emerald-quest' },
-  politics: { icon: Scroll, color: 'bg-imperial-gold' },
-  war: { icon: Swords, color: 'bg-blood-red' },
-  economy: { icon: Coins, color: 'bg-dusty-ochre' }
+  all: { label: 'All', icon: CalendarDays, color: '#5F665F' },
+  literature: { label: 'Literature', icon: BookOpen, color: '#28715F' },
+  politics: { label: 'Power', icon: Shield, color: '#B88A2C' },
+  war: { label: 'War', icon: Swords, color: '#8B2F2B' },
+  economy: { label: 'Money', icon: Coins, color: '#A7663B' },
+  life: { label: 'Cervantes', icon: Feather, color: '#27587A' },
 };
+
+type CategoryKey = keyof typeof categoryConfig;
+
+const sources = [
+  {
+    label: 'Britannica: Cervantes',
+    href: 'https://www.britannica.com/biography/Miguel-de-Cervantes',
+  },
+  {
+    label: 'Britannica: Spanish Armada',
+    href: 'https://www.britannica.com/topic/Armada-Spanish-naval-fleet',
+  },
+  {
+    label: 'Britannica: Moriscos',
+    href: 'https://www.britannica.com/topic/Morisco',
+  },
+  {
+    label: 'Library of Congress: Don Quixote',
+    href: 'https://www.loc.gov/item/2021666762/',
+  },
+];
 
 export function TimelineModule() {
   const { mode } = useViewMode();
-  const [selectedEvent, setSelectedEvent] = useState<TimelineEvent | null>(null);
   const events = timelineData.events as TimelineEvent[];
+  const [activeCategory, setActiveCategory] = useState<CategoryKey>('all');
+  const [selectedId, setSelectedId] = useState('part-one');
 
-  const getIcon = (category: TimelineEvent['category']) => {
-    const Icon = categoryConfig[category].icon;
-    return <Icon className="w-5 h-5" />;
-  };
+  const filteredEvents = useMemo(() => {
+    const sorted = [...events].sort((a, b) => a.year - b.year);
+    return activeCategory === 'all'
+      ? sorted
+      : sorted.filter((event) => event.category === activeCategory);
+  }, [activeCategory, events]);
+
+  const selectedEvent = useMemo(
+    () => filteredEvents.find((event) => event.id === selectedId) ?? filteredEvents[0] ?? events[0],
+    [events, filteredEvents, selectedId],
+  );
+
+  const selectedConfig = categoryConfig[selectedEvent.category];
+  const SelectedIcon = selectedConfig.icon;
 
   return (
-    <div className="min-h-screen py-20 px-6">
-      <div className="max-w-7xl mx-auto">
-        {/* Back Button */}
-        <motion.div
-          className="mb-8"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.4 }}
-        >
+    <main className="min-h-screen overflow-x-hidden px-6 py-24 sm:py-28">
+      <div className="mx-auto max-w-7xl">
+        <Button asChild variant="ghost" size="lg" className="mb-8 gap-2">
           <Link to="/">
-            <Button variant="ghost" size="lg">
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Back to Home
-            </Button>
+            <ArrowLeft className="h-4 w-4" />
+            Home
           </Link>
-        </motion.div>
+        </Button>
 
-        {/* Header */}
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: -20 }}
+        <motion.header
+          className="mb-10 grid gap-8 lg:grid-cols-[0.78fr_1.22fr]"
+          initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.55 }}
         >
-          <h1 className="text-5xl md:text-6xl mb-4">Timeline: 1550–1650</h1>
-          <p className="text-xl opacity-80 max-w-3xl mx-auto">
-            {mode === 'truth'
-              ? 'From Golden Age to disillusionment: the historical forces that shaped Don Quixote'
-              : 'An epic century of glory, adventure, and the birth of immortal literature'}
-          </p>
-        </motion.div>
-
-        {/* Category Legend */}
-        <motion.div
-          className="flex flex-wrap justify-center gap-4 mb-12"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3, duration: 0.5 }}
-        >
-          {Object.entries(categoryConfig).map(([category, config]) => (
-            <Badge key={category} variant="outline" className="px-4 py-2 gap-2">
-              {getIcon(category as TimelineEvent['category'])}
-              <span className="capitalize">{category}</span>
-            </Badge>
-          ))}
-        </motion.div>
-
-        {/* Timeline Container */}
-        <div className="relative">
-          {/* Horizontal Timeline Line */}
-          <div className="absolute left-0 right-0 top-1/2 h-1 bg-border -translate-y-1/2 hidden md:block" />
-
-          {/* Timeline Events */}
-          <div className="relative space-y-8 md:space-y-0">
-            {events.map((event, index) => {
-              const isEven = index % 2 === 0;
-              const CategoryIcon = categoryConfig[event.category].icon;
-
-              return (
-                <motion.div
-                  key={event.id}
-                  className={`relative ${
-                    isEven ? 'md:text-right' : 'md:text-left'
-                  }`}
-                  initial={{ opacity: 0, x: isEven ? -30 : 30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1, duration: 0.5 }}
-                >
-                  <div className={`flex flex-col md:flex-row items-center gap-4 ${
-                    isEven ? 'md:flex-row-reverse' : ''
-                  }`}>
-                    {/* Event Card */}
-                    <div className="flex-1 max-w-md">
-                      <Card
-                        className="cursor-pointer hover:shadow-xl transition-all duration-300 group"
-                        onClick={() => setSelectedEvent(event)}
-                      >
-                        <CardHeader>
-                          <div className="flex items-start gap-3">
-                            <div className={`p-2 rounded-lg ${
-                              mode === 'truth' ? 'bg-muted' : 'bg-primary/10'
-                            } group-hover:scale-110 transition-transform`}>
-                              <CategoryIcon className="w-5 h-5" />
-                            </div>
-                            <div className="flex-1">
-                              <CardTitle className="text-lg">{event.title}</CardTitle>
-                              <CardDescription>{event.year}</CardDescription>
-                            </div>
-                          </div>
-                        </CardHeader>
-                        <CardContent>
-                          <p className="text-sm line-clamp-3">
-                            {mode === 'truth' ? event.truthDescription : event.dareDescription}
-                          </p>
-                        </CardContent>
-                      </Card>
-                    </div>
-
-                    {/* Timeline Node */}
-                    <div className="relative z-10">
-                      <motion.div
-                        className={`w-4 h-4 rounded-full border-4 ${
-                          mode === 'truth' ? 'bg-background border-primary' : 'bg-background border-secondary'
-                        }`}
-                        whileHover={{ scale: 1.5 }}
-                      />
-                    </div>
-
-                    {/* Spacer for alternating layout */}
-                    <div className="flex-1 max-w-md hidden md:block" />
-                  </div>
-                </motion.div>
-              );
-            })}
+          <div>
+            <p className="flex items-center gap-2 text-sm font-semibold text-primary">
+              <CalendarDays className="h-4 w-4" />
+              Timeline
+            </p>
+            <h1 className="mt-3 text-3xl font-semibold sm:text-6xl">The century that reads him back.</h1>
           </div>
-        </div>
-
-        {/* Context Section */}
-        <motion.div
-          className="mt-20 p-8 bg-card rounded-xl border"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className="text-2xl mb-4">
-            {mode === 'truth' ? 'A Century of Decline' : 'A Century of Transformation'}
-          </h2>
-          <p className="text-muted-foreground leading-relaxed">
-            {mode === 'truth'
-              ? 'This timeline traces Spain\'s transformation from the "Golden Age" of imperial dominance to deep disillusionment. Cervantes wasn\'t just writing a parody of knight-errantry; he was writing the eulogy for an era. Don Quixote\'s madness—clinging to outdated chivalric ideals in a world of economic collapse, military defeat, and religious persecution—mirrors Spain\'s own refusal to accept its decline.'
-              : 'This century witnessed the height of Spanish cultural achievement and the birth of modern literature. Despite challenges, the spirit of the age lives on through Cervantes\'s masterwork. Don Quixote\'s idealism represents the eternal human capacity to dream beyond material circumstances, to find meaning and nobility even in a world that seems to have lost its way.'}
+          <p className="max-w-3xl text-lg leading-relaxed text-muted-foreground">
+            This is not a “history explains everything” chart. It is a pressure map: war, money, censorship, print, and exile create the world in which Don Quixote’s fantasy becomes funny, painful, and modern.
           </p>
-        </motion.div>
-      </div>
+        </motion.header>
 
-      {/* Event Detail Modal */}
-      <AnimatePresence>
-        {selectedEvent && (
-          <>
-            {/* Backdrop */}
-            <motion.div
-              className="fixed inset-0 bg-black/50 z-40"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setSelectedEvent(null)}
-            />
+        <section className="mb-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-6">
+          {(Object.keys(categoryConfig) as CategoryKey[]).map((category) => {
+            const config = categoryConfig[category];
+            const Icon = config.icon;
+            const isActive = activeCategory === category;
 
-            {/* Modal */}
-            <motion.div
-              className="fixed inset-0 z-50 flex items-center justify-center p-6"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              onClick={() => setSelectedEvent(null)}
-            >
-              <Card
-                className="max-w-3xl w-full max-h-[90vh] overflow-y-auto"
-                onClick={(e) => e.stopPropagation()}
+            return (
+              <button
+                key={category}
+                type="button"
+                onClick={() => setActiveCategory(category)}
+                className={`flex items-center gap-2 rounded-lg border px-4 py-3 text-left transition ${
+                  isActive
+                    ? 'border-primary bg-primary/15 text-foreground'
+                    : 'bg-card text-muted-foreground hover:bg-card/80'
+                }`}
               >
-                <CardHeader>
-                  <div className="flex items-start gap-3 mb-2">
-                    <div className={`p-3 rounded-lg ${
-                      mode === 'truth' ? 'bg-muted' : 'bg-primary/10'
-                    }`}>
-                      {getIcon(selectedEvent.category)}
+                <Icon className="h-4 w-4" style={{ color: config.color }} />
+                <span className="font-semibold">{config.label}</span>
+              </button>
+            );
+          })}
+        </section>
+
+        <section className="grid gap-6 lg:grid-cols-[1fr_0.92fr]">
+          <div className="relative rounded-lg border bg-card p-4 shadow-xl">
+            <div className="absolute bottom-0 left-10 top-0 hidden w-px bg-border md:block" />
+            <div className="space-y-3">
+              {filteredEvents.map((event) => {
+                const config = categoryConfig[event.category];
+                const Icon = config.icon;
+                const isSelected = selectedEvent.id === event.id;
+
+                return (
+                  <motion.button
+                    key={event.id}
+                    type="button"
+                    onClick={() => setSelectedId(event.id)}
+                    className={`relative grid w-full gap-3 rounded-lg border p-4 text-left transition md:grid-cols-[5rem_1fr] ${
+                      isSelected
+                        ? 'border-primary bg-primary/15 shadow-sm'
+                        : 'bg-background hover:bg-muted/50'
+                    }`}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.25 }}
+                  >
+                    <div className="flex items-center gap-3 md:block">
+                      <span className="flex h-10 w-10 items-center justify-center rounded-lg text-white shadow-sm" style={{ backgroundColor: config.color }}>
+                        <Icon className="h-5 w-5" />
+                      </span>
+                      <span className="mt-2 block font-semibold text-primary md:text-lg">{event.displayDate}</span>
                     </div>
-                    <div className="flex-1">
-                      <CardTitle className="text-3xl">{selectedEvent.title}</CardTitle>
-                      <CardDescription className="text-lg mt-1">
-                        {selectedEvent.year}
-                      </CardDescription>
+                    <div>
+                      <h2 className="text-xl font-semibold">{event.title}</h2>
+                      <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-muted-foreground">
+                        {mode === 'truth' ? event.truthDescription : event.dareDescription}
+                      </p>
                     </div>
-                  </div>
-                  <Badge className="w-fit capitalize">{selectedEvent.category}</Badge>
-                </CardHeader>
-                <CardContent className="space-y-6">
-                  {/* Current Mode Description */}
-                  <div>
-                    <h3 className="text-xl font-medium mb-3">
-                      {mode === 'truth' ? 'Historical Reality' : 'The Heroic Vision'}
-                    </h3>
-                    <p className="leading-relaxed">
-                      {mode === 'truth' ? selectedEvent.truthDescription : selectedEvent.dareDescription}
-                    </p>
-                  </div>
+                  </motion.button>
+                );
+              })}
+            </div>
+          </div>
 
-                  {/* Alternate Perspective */}
-                  <div className="p-4 bg-muted/50 rounded-lg border-l-4 border-accent">
-                    <h3 className="text-lg font-medium mb-2">
-                      {mode === 'truth' ? 'The Idealist View' : 'The Realist View'}
-                    </h3>
-                    <p className="leading-relaxed text-sm">
-                      {mode === 'truth' ? selectedEvent.dareDescription : selectedEvent.truthDescription}
-                    </p>
-                  </div>
+          <AnimatePresence mode="wait">
+            <motion.article
+              key={selectedEvent.id}
+              initial={{ opacity: 0, x: 18 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -18 }}
+              transition={{ duration: 0.25 }}
+              className="rounded-lg border bg-card p-5 shadow-xl"
+            >
+              <div className="flex flex-wrap items-start justify-between gap-4">
+                <div>
+                  <Badge className="mb-3" style={{ backgroundColor: selectedConfig.color }}>
+                    {selectedConfig.label}
+                  </Badge>
+                  <h2 className="text-4xl font-semibold">{selectedEvent.title}</h2>
+                  <p className="mt-2 text-lg font-semibold text-primary">{selectedEvent.displayDate}</p>
+                </div>
+                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/15 text-primary">
+                  <SelectedIcon className="h-6 w-6" />
+                </div>
+              </div>
 
-                  {/* Significance */}
-                  <div>
-                    <h3 className="text-lg font-medium mb-2">Significance for Don Quixote</h3>
-                    <p className="leading-relaxed italic">
-                      {selectedEvent.significance}
-                    </p>
-                  </div>
+              <div className="mt-6 rounded-lg border bg-background p-5">
+                <p className="mb-2 flex items-center gap-2 text-sm font-semibold text-primary">
+                  <ScrollText className="h-4 w-4" />
+                  {mode === 'truth' ? 'Historical pressure' : 'Romance pressure'}
+                </p>
+                <p className="leading-relaxed text-muted-foreground">
+                  {mode === 'truth' ? selectedEvent.truthDescription : selectedEvent.dareDescription}
+                </p>
+              </div>
 
-                  <Button onClick={() => setSelectedEvent(null)} className="w-full">
-                    Close
-                  </Button>
-                </CardContent>
-              </Card>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
-    </div>
+              <div className="mt-4 rounded-lg border bg-background p-5">
+                <p className="mb-2 flex items-center gap-2 text-sm font-semibold text-accent">
+                  <Cross className="h-4 w-4" />
+                  Other lens
+                </p>
+                <p className="leading-relaxed text-muted-foreground">
+                  {mode === 'truth' ? selectedEvent.dareDescription : selectedEvent.truthDescription}
+                </p>
+              </div>
+
+              <div className="mt-4 rounded-lg border bg-primary/10 p-5">
+                <p className="text-sm font-semibold text-primary">Why it matters for Don Quixote</p>
+                <p className="mt-2 leading-relaxed">{selectedEvent.significance}</p>
+              </div>
+            </motion.article>
+          </AnimatePresence>
+        </section>
+
+        <section className="mt-12 rounded-lg border bg-card p-5">
+          <p className="text-sm font-semibold text-primary">Source trail</p>
+          <div className="mt-3 flex flex-wrap gap-3">
+            {sources.map((source) => (
+              <a
+                key={source.href}
+                href={source.href}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-lg border bg-background px-3 py-2 text-sm text-muted-foreground transition hover:text-foreground"
+              >
+                {source.label}
+                <ExternalLink className="h-3.5 w-3.5" />
+              </a>
+            ))}
+          </div>
+        </section>
+      </div>
+    </main>
   );
 }

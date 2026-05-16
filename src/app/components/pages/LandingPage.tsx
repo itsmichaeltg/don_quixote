@@ -1,242 +1,273 @@
-import { useViewMode } from '../../context/ViewModeContext';
+import { useState } from 'react';
+import { Link } from 'react-router';
+import { motion } from 'motion/react';
+import {
+  ArrowRight,
+  BookOpen,
+  CalendarDays,
+  Compass,
+  Library,
+  MapPinned,
+  Sparkles,
+} from 'lucide-react';
 import { Button } from '../ui/button';
 import { Card, CardDescription, CardHeader, CardTitle } from '../ui/card';
-import { motion } from 'motion/react';
-import { Map, BookText, Users, Sparkles, Compass, Lightbulb, Library, GitBranch } from 'lucide-react';
-import { Link } from 'react-router';
+import { useViewMode } from '../../context/ViewModeContext';
+import heroImage from '../../../imports/windmills-hero.jpg';
+
+const modules = [
+  {
+    id: 'themes',
+    icon: Sparkles,
+    label: 'Themes',
+    title: 'Theme Lens',
+    description: 'Reality, imagination, class, authorship, and the uneasy joke of being sane.',
+    path: '/themes',
+    prompt: 'Track how the same event can be comedy, critique, and heartbreak at once.',
+  },
+  {
+    id: 'journey',
+    icon: MapPinned,
+    label: 'Journey',
+    title: 'The Three Sallies',
+    description: 'Follow the route from a nameless village through La Mancha and finally Barcelona.',
+    path: '/journey',
+    prompt: 'Watch places change meaning when Sancho, strangers, and readers join the performance.',
+  },
+  {
+    id: 'timeline',
+    icon: CalendarDays,
+    label: 'Timeline',
+    title: 'History Around the Novel',
+    description: 'Place Cervantes between Lepanto, inflation, censorship, publication, and exile.',
+    path: '/timeline',
+    prompt: 'Use history as pressure, not trivia: what does the age make possible or absurd?',
+  },
+  {
+    id: 'books',
+    icon: Library,
+    label: 'Books',
+    title: 'The Library Trial',
+    description: 'Open the books that shaped Don Quixote and see which ones survive Chapter 6.',
+    path: '/books',
+    prompt: 'Ask why Cervantes burns, saves, jokes about, or quarantines different fantasies.',
+  },
+];
+
+const anchorFacts = [
+  {
+    label: '1605 / 1615',
+    text: 'Don Quixote appeared in two parts, a decade apart.',
+  },
+  {
+    label: '1571',
+    text: 'Cervantes fought at Lepanto and permanently lost the use of his left hand.',
+  },
+  {
+    label: 'Chapter 6',
+    text: 'The priest and barber judge real chivalric books from Don Quixote’s library.',
+  },
+  {
+    label: 'Chapter 8',
+    text: 'The windmills are not named by town; Campo de Criptana is a strong later tradition.',
+  },
+];
+
+const sourceLinks = [
+  {
+    label: 'Britannica: Cervantes',
+    href: 'https://www.britannica.com/biography/Miguel-de-Cervantes',
+  },
+  {
+    label: 'Library of Congress: 1605 edition',
+    href: 'https://www.loc.gov/item/2021666762/',
+  },
+  {
+    label: 'Project Gutenberg: Chapters 6-8',
+    href: 'https://www.gutenberg.org/files/5921/old/orig5921-h/p3.htm',
+  },
+  {
+    label: 'Castilla-La Mancha tourism: Campo de Criptana',
+    href: 'https://www.turismocastillalamancha.es/es/destinos/encanto-rural/ciudad-real/campo-de-criptana',
+  },
+];
 
 export function LandingPage() {
   const { mode, setMode } = useViewMode();
-
-  const modules = [
-    {
-      icon: Map,
-      title: 'Geopolitical Map',
-      description: 'Explore the Hapsburg Empire and Age of Empire upheavals',
-      path: '/map'
-    },
-    {
-      icon: Library,
-      title: 'Library of Madness',
-      description: 'The books of chivalry that shaped Quixote\'s delusions',
-      path: '/library'
-    },
-    {
-      icon: GitBranch,
-      title: 'Dialectic Slider',
-      description: 'Compare objective reality vs individual experience',
-      path: '/dialectic'
-    },
-    {
-      icon: Compass,
-      title: 'Timeline',
-      description: 'Navigate from 1550-1650 through historical upheavals',
-      path: '/timeline'
-    },
-    {
-      icon: Users,
-      title: 'Character Network',
-      description: 'Visual connections between characters and their roles',
-      path: '/characters'
-    },
-    {
-      icon: BookText,
-      title: 'Journey Visualizer',
-      description: 'Follow the three Sallys across La Mancha',
-      path: '/journey'
-    },
-    {
-      icon: Sparkles,
-      title: 'Themes & Philosophy',
-      description: 'The philosophical tensions between Idealism and Realism',
-      path: '/themes'
-    },
-    {
-      icon: Lightbulb,
-      title: 'Revolutionary Ideas',
-      description: 'What makes Cervantes modern and revolutionary?',
-      path: '/revolutionary'
-    }
-  ];
+  const [activeModule, setActiveModule] = useState(modules[0]);
 
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <motion.section
-        className="relative h-screen flex items-center justify-center overflow-hidden"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-      >
-        {/* Background Image with Overlay */}
-        <div className="absolute inset-0">
+    <main className="min-h-screen overflow-hidden">
+      <section className="relative flex min-h-[88vh] items-center px-6 pb-12 pt-28 sm:pt-32">
+        <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1774202977950-fea3256c9f87?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920"
-            alt="Windmills of La Mancha"
-            className="w-full h-full object-cover"
+            src={heroImage}
+            alt="Windmills in La Mancha"
+            className="h-full w-full scale-105 object-cover object-center opacity-95 blur-[1px] brightness-75"
           />
-          <div
-            className={`absolute inset-0 transition-all duration-700 ${
-              mode === 'truth'
-                ? 'bg-gradient-to-b from-woodcut-black/60 via-stone-gray/40 to-parchment/80'
-                : 'bg-gradient-to-b from-enchantment-purple/70 via-knight-azure/50 to-romance-rose/40'
-            }`}
+          <div className={`absolute inset-0 ${
+            mode === 'truth'
+              ? 'bg-[linear-gradient(90deg,rgba(23,20,17,0.72),rgba(139,47,43,0.24),rgba(242,231,210,0.58))]'
+              : 'bg-[linear-gradient(90deg,rgba(22,35,31,0.76),rgba(40,113,95,0.36),rgba(112,80,130,0.42))]'
+          }`}
           />
         </div>
 
-        {/* Hero Content */}
-        <div className="relative z-10 text-center px-6 max-w-5xl text-black">
+        <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
           <motion.div
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            className="max-w-3xl text-white"
           >
-            <h1 className="text-6xl md:text-8xl mb-6 tracking-tight">
-              <span className="block">Truth or Dare:</span>
-              <span className="block mt-2">Don Quixote</span>
+            <div className="mb-5 inline-flex items-center gap-2 rounded-lg border border-white/30 bg-black/25 px-3 py-2 text-sm backdrop-blur-sm">
+              <BookOpen className="h-4 w-4" />
+              Reading lab for first-time knights and skeptical squires
+            </div>
+            <h1 className="text-5xl font-semibold leading-none sm:text-7xl lg:text-8xl">
+              Don Quixote
             </h1>
-            <p className="text-2xl md:text-3xl mb-4 opacity-90">
-              in an Age of Empire
+            <p className="mt-5 max-w-2xl text-xl leading-relaxed text-white/90 sm:text-2xl">
+              A playable guide to Cervantes’s strange machine: books create a knight, roads test him, history presses in, and the joke keeps changing sides.
             </p>
-            <p className="text-lg md:text-xl mb-12 max-w-3xl mx-auto opacity-80">
-              An interactive exploration of Cervantes's masterpiece through the dual lens of
-              Imperial Reality and Chivalric Illusion
-            </p>
+
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Button asChild size="lg" className="gap-2">
+                <Link to="/journey">
+                  <Compass className="h-5 w-5" />
+                  Start The Journey
+                </Link>
+              </Button>
+              <Button
+                size="lg"
+                variant="secondary"
+                className="gap-2"
+                onClick={() => setMode(mode === 'truth' ? 'dare' : 'truth')}
+              >
+                <Sparkles className="h-5 w-5" />
+                Shift The Lens
+              </Button>
+            </div>
           </motion.div>
 
           <motion.div
-            className="flex gap-4 justify-center flex-wrap"
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.6, duration: 0.6 }}
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.15, duration: 0.7 }}
+            className="rounded-lg border border-white/20 bg-black/35 p-4 text-white shadow-2xl backdrop-blur-md"
           >
-            <Button
-              size="lg"
-              variant={mode === 'truth' ? 'default' : 'outline'}
-              onClick={() => setMode('truth')}
-              className="text-lg px-8 py-6"
+            <div className="grid grid-cols-2 gap-2">
+              {modules.map((module) => {
+                const Icon = module.icon;
+                const isActive = activeModule.id === module.id;
+
+                return (
+                  <button
+                    key={module.id}
+                    type="button"
+                    onMouseEnter={() => setActiveModule(module)}
+                    onFocus={() => setActiveModule(module)}
+                    onClick={() => setActiveModule(module)}
+                    className={`flex min-h-20 flex-col items-start justify-between rounded-lg border p-3 text-left transition ${
+                      isActive
+                        ? 'border-primary bg-primary/25 text-white'
+                        : 'border-white/20 bg-white/10 text-white/80 hover:bg-white/20'
+                    }`}
+                  >
+                    <Icon className="h-5 w-5" />
+                    <span className="text-base font-semibold">{module.label}</span>
+                  </button>
+                );
+              })}
+            </div>
+
+            <motion.div
+              key={activeModule.id}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.25 }}
+              className="mt-4 rounded-lg border border-white/15 bg-white/10 p-4"
             >
-              Enter Truth Mode
-            </Button>
-            <Button
-              size="lg"
-              variant={mode === 'dare' ? 'default' : 'outline'}
-              onClick={() => setMode('dare')}
-              className="text-lg px-8 py-6"
-            >
-              Enter Dare Mode
-            </Button>
+              <p className="text-sm text-white/60">Current reading move</p>
+              <h2 className="mt-2 text-3xl font-semibold">{activeModule.title}</h2>
+              <p className="mt-3 leading-relaxed text-white/80">{activeModule.prompt}</p>
+              <Button asChild variant="outline" className="mt-4 gap-2 border-white/30 bg-white/10 text-white hover:bg-white/20">
+                <Link to={activeModule.path}>
+                  Open {activeModule.label}
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </Button>
+            </motion.div>
           </motion.div>
         </div>
+      </section>
 
-        {/* Scroll Indicator */}
-        <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ repeat: Infinity, duration: 2 }}
-        >
-          <div className="w-6 h-10 border-2 border-current rounded-full flex items-start justify-center p-2">
-            <div className="w-1 h-3 bg-current rounded-full" />
-          </div>
-        </motion.div>
-      </motion.section>
+      <section className="border-y border-border/70 bg-background/95 px-6 py-12">
+        <div className="mx-auto grid max-w-7xl gap-4 md:grid-cols-4">
+          {modules.map((module, index) => {
+            const Icon = module.icon;
 
-      {/* Modules Grid */}
-      <section className="py-20 px-6">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-4xl md:text-5xl mb-4">
-              Explore the Dual Reality
-            </h2>
-            <p className="text-xl opacity-80 max-w-2xl mx-auto">
-              Navigate through interactive modules that reveal the tension between
-              sanity and madness, truth and falsehood, history and fiction
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {modules.map((module, index) => (
+            return (
               <motion.div
-                key={module.path}
-                initial={{ opacity: 0, y: 20 }}
+                key={module.id}
+                initial={{ opacity: 0, y: 18 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1, duration: 0.5 }}
+                viewport={{ once: true, margin: '-80px' }}
+                transition={{ delay: index * 0.06, duration: 0.45 }}
               >
                 <Link to={module.path} className="block h-full">
-                  <Card className="h-full hover:shadow-xl transition-all duration-300 cursor-pointer group">
+                  <Card className="h-full transition hover:-translate-y-1 hover:shadow-xl">
                     <CardHeader>
-                      <div className="mb-4 p-3 rounded-lg bg-primary/10 w-fit group-hover:scale-110 transition-transform">
-                        <module.icon className="w-8 h-8 text-primary" />
+                      <div className="mb-2 flex h-11 w-11 items-center justify-center rounded-lg bg-primary/15 text-primary">
+                        <Icon className="h-5 w-5" />
                       </div>
-                      <CardTitle className="text-xl">{module.title}</CardTitle>
-                      <CardDescription className="text-base">
+                      <CardTitle className="text-2xl">{module.title}</CardTitle>
+                      <CardDescription className="text-base leading-relaxed">
                         {module.description}
                       </CardDescription>
                     </CardHeader>
                   </Card>
                 </Link>
               </motion.div>
-            ))}
-          </div>
+            );
+          })}
         </div>
       </section>
 
-      {/* Course Context Section */}
-      <section className="py-20 px-6 bg-muted/30">
-        <div className="max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-4xl mb-8 text-center">
-              The Great Upheavals
-            </h2>
-            <div className="space-y-6 text-lg leading-relaxed">
-              <p>
-                This exploration examines Don Quixote against the backdrop of transformative
-                historical forces that shaped the early modern world:
-              </p>
-              <ul className="space-y-3 ml-6">
-                <li className="flex gap-3">
-                  <span className="text-primary mt-1">•</span>
-                  <span>Renaissance Europe's discovery of America</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-primary mt-1">•</span>
-                  <span>Feudalism's demise and the rise of mass poverty</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-primary mt-1">•</span>
-                  <span>Reformation and Counter-Reformation</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-primary mt-1">•</span>
-                  <span>Extermination of heretics and war against infidels</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-primary mt-1">•</span>
-                  <span>The decline of the Hapsburg dynasty</span>
-                </li>
-              </ul>
-              <p>
-                The hapless protagonist calls into question the boundaries between sanity and
-                madness, truth and falsehood, history and fiction, objectivity and individual
-                experience. What might be modern, perhaps even revolutionary, in Cervantes's
-                dramatization of the moral and material dilemmas of his time?
-              </p>
-            </div>
-          </motion.div>
+      <section className="px-6 py-16">
+        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr]">
+          <div>
+            <p className="text-sm font-semibold text-primary">Fact-checked anchors</p>
+            <h2 className="mt-3 text-4xl font-semibold sm:text-5xl">Keep these in your pocket while reading.</h2>
+            <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
+              The site separates hard facts from strong traditions and interpretation. That matters because Don Quixote is basically a brilliant trap for people who confuse a good story with proof.
+            </p>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            {anchorFacts.map((fact) => (
+              <div key={fact.label} className="rounded-lg border bg-card p-5 shadow-sm">
+                <p className="text-2xl font-semibold text-primary">{fact.label}</p>
+                <p className="mt-3 leading-relaxed text-muted-foreground">{fact.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="mx-auto mt-10 flex max-w-7xl flex-wrap gap-3 text-sm">
+          {sourceLinks.map((source) => (
+            <a
+              key={source.href}
+              href={source.href}
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-lg border bg-card px-3 py-2 text-muted-foreground transition hover:text-foreground"
+            >
+              {source.label}
+            </a>
+          ))}
         </div>
       </section>
-    </div>
+    </main>
   );
 }
