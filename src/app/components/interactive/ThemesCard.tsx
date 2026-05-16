@@ -57,15 +57,15 @@ const THEMES: ThemeLens[] = [
     sancho: 'Sancho senses risk before Don Quixote does. His caution asks whether justice is still justice when it ignores consequences.',
     classroomMove: 'After each rescue, check the result, not only the motive.',
   },
-  // {
-  //   id: 'metafiction',
-  //   title: 'Short Stories as a Teaching Point',
-  //   icon: Theater,
-  //   passage: 'Part II and the false sequel',
-  //   quixote: 'By Part II, Don Quixote knows people have read about him. He begins performing for a reputation already circulating in print.',
-  //   sancho: 'Sancho hears his own proverbs, errors, and ambitions reflected back by readers. Fame becomes funny because it does not feed him or protect him.',
-  //   classroomMove: 'Treat Part II as a social media problem before social media: identity gets copied, judged, and misused.',
-  // },
+  {
+  id: "fables",
+  title: "Short Stories as a Teaching Point",
+  icon: Theater,
+  passage: "The Exemplary Tales and Interpolated Tales",
+  quixote: "Don Quixote often pauses his main quest to listen to or debate the merits of self-contained short stories, treating fiction within fiction as a mirror for his own idealized reality.",
+  sancho: "Sancho prefers straightforward folk wisdom over complex literary tales, often interrupting the formal stories with his own earthy parables and practical commentary.",
+  classroomMove: "Use the 'story-within-a-story' format to teach narrative layers, showing students how characters analyze fiction just like real-world readers do."
+  }
 ];
 
 export function ThemesCard() {

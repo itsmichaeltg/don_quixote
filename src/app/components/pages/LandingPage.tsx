@@ -233,7 +233,7 @@ export function LandingPage() {
             );
           })}
         </div>
-        <div className="mx-auto mt-10 flex max-w-7xl flex-wrap gap-3 text-sm">
+        <div className="mx-auto mt-10 flex max-w-7xl flex-wrap justify-center gap-3 text-sm">
           {sourceLinks.map((source) => (
             <a
               key={source.href}

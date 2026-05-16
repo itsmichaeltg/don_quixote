@@ -140,8 +140,8 @@ export function LibraryOfMadness() {
           </div>
         </section>
 
-        <section className="mt-10 grid gap-5 lg:grid-cols-[0.8fr_1.2fr]">
-          {/* <div className="rounded-lg border bg-card p-5">
+        {/* <section className="mt-10 grid gap-5 lg:grid-cols-[0.8fr_1.2fr]">
+           <div className="rounded-lg border bg-card p-5">
             <p className="flex items-center gap-2 text-sm font-semibold text-primary">
               <Gavel className="h-4 w-4" />
               What got cleaned up
@@ -149,7 +149,7 @@ export function LibraryOfMadness() {
             <p className="mt-3 leading-relaxed text-muted-foreground">
               The bookshelf now separates chapter verdicts from interpretation. It avoids treating every traditional claim as proven fact and keeps Cervantes’s actual joke in view: he saves some fantasies, burns others, and cannot resist judging style.
             </p>
-          </div> */}
+          </div> 
           <div className="grid gap-4 sm:grid-cols-3">
             <div className="rounded-lg border bg-card p-5">
               <p className="text-2xl font-semibold text-primary">8</p>
@@ -164,7 +164,7 @@ export function LibraryOfMadness() {
               <p className="mt-2 text-sm text-muted-foreground">question: what should readers do with powerful stories?</p>
             </div>
           </div>
-        </section>
+        </section> */}
 
         <section className="mt-12 rounded-lg border bg-card p-5">
           <p className="text-sm font-semibold text-primary">Source trail</p>
