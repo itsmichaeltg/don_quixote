@@ -1,6 +1,16 @@
 {
   "events": [
     {
+      "id": "spanish-inquisition",
+      "year": 1478,
+      "displayDate": "1478-1834",
+      "title": "The Spanish Inquisition",
+      "category": "politics",
+      "truthDescription": "Established by Ferdinand and Isabella in 1478 and later state-controlled, the Inquisition sought to ensure religious orthodoxy. Britannica notes its notorious use of torture, censorship, and the public execution ritual known as the auto-da-fé.",
+      "dareDescription": "A regime of total ideological compliance demands a single, official script for reality. Deviant ideas, secret heretical identities, and 'forbidden' books are hunted down to keep the national narrative pure.",
+      "significance": "The shadow of the Inquisition directly influences the novel's climate of paranoia and self-censorship. Don Quixote's madness—mistaking windmills for giants—parodies a society trained to look for hidden, monstrous enemies behind every ordinary facade."
+    },
+    {
       "id": "lazarillo",
       "year": 1554,
       "displayDate": "1554",
