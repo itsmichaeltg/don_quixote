@@ -22,19 +22,18 @@ interface Location {
   name: string;
   coordinates: { lat: number; lng: number };
   chapter: string;
-  sally: string;
+  journey: string;
   episode: string;
   connection: string;
   reality: string;
   quixoteView: string;
-  readingQuestion: string;
   mapPosition: { x: number; y: number };
 }
 
-const sallyColors: Record<string, string> = {
-  'First sally': '#B88A2C',
-  'Second sally': '#8B2F2B',
-  'Third sally': '#28715F',
+const journeyColors: Record<string, string> = {
+  'First journey': '#B88A2C',
+  'Second journey': '#8B2F2B',
+  'Third journey': '#28715F',
 };
 
 const sources = [
@@ -98,7 +97,7 @@ export function JourneyVisualizer() {
     [locations, selectedId],
   );
 
-  const selectedColor = sallyColors[selectedLocation.sally] ?? '#B88A2C';
+  const selectedColor = journeyColors[selectedLocation.journey] ?? '#B88A2C';
 
   useEffect(() => {
     if (!mapElementRef.current || mapRef.current) return;
@@ -125,7 +124,7 @@ export function JourneyVisualizer() {
     }).addTo(map);
 
     locations.forEach((location, index) => {
-      const color = sallyColors[location.sally] ?? '#B88A2C';
+      const color = journeyColors[location.journey] ?? '#B88A2C';
       const marker = L.marker([location.coordinates.lat, location.coordinates.lng], {
         icon: createMarkerIcon(index, color, location.id === selectedId),
       })
@@ -176,7 +175,7 @@ export function JourneyVisualizer() {
       marker.setIcon(
         createMarkerIcon(
           index,
-          sallyColors[location.sally] ?? '#B88A2C',
+          journeyColors[location.journey] ?? '#B88A2C',
           location.id === selectedId,
         ),
       );
@@ -240,10 +239,10 @@ export function JourneyVisualizer() {
             </div>
 
             <div className="absolute bottom-4 left-4 right-4 z-10 flex flex-wrap gap-2">
-              {Object.entries(sallyColors).map(([sally, color]) => (
-                <span key={sally} className="inline-flex items-center gap-2 rounded-lg border bg-card/90 px-3 py-2 text-sm shadow-sm backdrop-blur-sm">
+              {Object.entries(journeyColors).map(([journey, color]) => (
+                <span key={journey} className="inline-flex items-center gap-2 rounded-lg border bg-card/90 px-3 py-2 text-sm shadow-sm backdrop-blur-sm">
                   <span className="h-3 w-3 rounded-sm" style={{ backgroundColor: color }} />
-                  {sally}
+                  {journey}
                 </span>
               ))}
             </div>
@@ -262,7 +261,7 @@ export function JourneyVisualizer() {
                 <div className="flex flex-wrap items-start justify-between gap-3">
                   <div>
                     <Badge className="mb-3" style={{ backgroundColor: selectedColor }}>
-                      {selectedLocation.sally}
+                      {selectedLocation.journey}
                     </Badge>
                     <h2 className="text-4xl font-semibold">{selectedLocation.name}</h2>
                     <p className="mt-2 text-sm text-muted-foreground">
@@ -294,10 +293,10 @@ export function JourneyVisualizer() {
                   </div>
                 </div>
 
-                <div className="mt-5 rounded-lg border bg-primary/10 p-4">
+                {/* <div className="mt-5 rounded-lg border bg-primary/10 p-4">
                   <p className="text-sm font-semibold text-primary">Reading question</p>
                   <p className="mt-2 leading-relaxed">{selectedLocation.readingQuestion}</p>
-                </div>
+                </div> */}
               </motion.article>
             </AnimatePresence>
 
@@ -313,7 +312,7 @@ export function JourneyVisualizer() {
                       : 'bg-card/80 text-muted-foreground hover:bg-card'
                   }`}
                 >
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-sm font-semibold text-white" style={{ backgroundColor: sallyColors[location.sally] }}>
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-sm font-semibold text-white" style={{ backgroundColor: journeyColors[location.journey] }}>
                     {index + 1}
                   </span>
                   <span className="min-w-0 flex-1">

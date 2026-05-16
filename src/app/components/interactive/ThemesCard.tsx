@@ -57,15 +57,15 @@ const THEMES: ThemeLens[] = [
     sancho: 'Sancho senses risk before Don Quixote does. His caution asks whether justice is still justice when it ignores consequences.',
     classroomMove: 'After each rescue, check the result, not only the motive.',
   },
-  {
-    id: 'metafiction',
-    title: 'Fame, Authorship, And The Book Inside The Book',
-    icon: Theater,
-    passage: 'Part II and the false sequel',
-    quixote: 'By Part II, Don Quixote knows people have read about him. He begins performing for a reputation already circulating in print.',
-    sancho: 'Sancho hears his own proverbs, errors, and ambitions reflected back by readers. Fame becomes funny because it does not feed him or protect him.',
-    classroomMove: 'Treat Part II as a social media problem before social media: identity gets copied, judged, and misused.',
-  },
+  // {
+  //   id: 'metafiction',
+  //   title: 'Short Stories as a Teaching Point',
+  //   icon: Theater,
+  //   passage: 'Part II and the false sequel',
+  //   quixote: 'By Part II, Don Quixote knows people have read about him. He begins performing for a reputation already circulating in print.',
+  //   sancho: 'Sancho hears his own proverbs, errors, and ambitions reflected back by readers. Fame becomes funny because it does not feed him or protect him.',
+  //   classroomMove: 'Treat Part II as a social media problem before social media: identity gets copied, judged, and misused.',
+  // },
 ];
 
 export function ThemesCard() {
@@ -178,10 +178,10 @@ export function ThemesCard() {
           </motion.div>
         </AnimatePresence>
 
-        <div className="mt-5 rounded-lg border bg-primary/10 p-5">
+        {/* <div className="mt-5 rounded-lg border bg-primary/10 p-5">
           <p className="text-sm font-semibold text-primary">Classroom move</p>
           <p className="mt-2 leading-relaxed">{selectedTheme.classroomMove}</p>
-        </div>
+        </div> */}
       </motion.div>
     </div>
   );

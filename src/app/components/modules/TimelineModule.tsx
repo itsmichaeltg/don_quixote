@@ -34,7 +34,6 @@ const categoryConfig = {
   literature: { label: 'Literature', icon: BookOpen, color: '#28715F' },
   politics: { label: 'Power', icon: Shield, color: '#B88A2C' },
   war: { label: 'War', icon: Swords, color: '#8B2F2B' },
-  economy: { label: 'Money', icon: Coins, color: '#A7663B' },
   life: { label: 'Cervantes', icon: Feather, color: '#27587A' },
 };
 
@@ -104,7 +103,8 @@ export function TimelineModule() {
             <h1 className="mt-3 text-3xl font-semibold sm:text-6xl">The century that reads him back.</h1>
           </div>
           <p className="max-w-3xl text-lg leading-relaxed text-muted-foreground">
-            This is not a “history explains everything” chart. It is a pressure map: war, money, censorship, print, and exile create the world in which Don Quixote’s fantasy becomes funny, painful, and modern.
+            {/* This is not a “history explains everything” chart. It is a pressure map: war, money, censorship, print, and exile create the world in which Don Quixote’s fantasy becomes funny, painful, and modern. */}
+            This is a timeline of the major events that occured throught the creation of and the initial release of the novel. These events contexualize 
           </p>
         </motion.header>
 

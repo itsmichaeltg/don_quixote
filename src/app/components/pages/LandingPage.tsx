@@ -150,7 +150,7 @@ export function LandingPage() {
             </div>
           </motion.div>
 
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.15, duration: 0.7 }}
@@ -198,8 +198,9 @@ export function LandingPage() {
                 </Link>
               </Button>
             </motion.div>
-          </motion.div>
+          </motion.div> */}
         </div>
+        
       </section>
 
       <section className="border-y border-border/70 bg-background/95 px-6 py-12">
@@ -232,9 +233,22 @@ export function LandingPage() {
             );
           })}
         </div>
+        <div className="mx-auto mt-10 flex max-w-7xl flex-wrap gap-3 text-sm">
+          {sourceLinks.map((source) => (
+            <a
+              key={source.href}
+              href={source.href}
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-lg border bg-card px-3 py-2 text-muted-foreground transition hover:text-foreground"
+            >
+              {source.label}
+            </a>
+          ))}
+        </div>
       </section>
 
-      <section className="px-6 py-16">
+      {/* <section className="px-6 py-16">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr]">
           <div>
             <p className="text-sm font-semibold text-primary">Fact-checked anchors</p>
@@ -267,7 +281,9 @@ export function LandingPage() {
             </a>
           ))}
         </div>
-      </section>
+      </section> */}
+      
+       
     </main>
   );
 }

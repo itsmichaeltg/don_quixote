@@ -2,15 +2,14 @@
   "locations": [
     {
       "id": "argamasilla",
-      "name": "Unnamed village / Argamasilla tradition",
+      "name": "Argamasilla tradition",
       "coordinates": { "lat": 39.1275, "lng": -3.0886 },
       "chapter": "Part I, Chapter 1",
-      "sally": "First sally",
+      "journey": "First journey",
       "episode": "Alonso Quijano reads himself into knighthood.",
       "connection": "Cervantes famously refuses to name Don Quixote's home village. Argamasilla de Alba is one of the strongest later traditions, partly because local legend connects Cervantes to imprisonment in the Casa de Medrano, but the novel itself keeps the origin deliberately unresolved.",
       "reality": "A minor rural gentleman has more books and status anxiety than money. The unnamed village keeps him ordinary before he makes himself legendary.",
       "quixoteView": "The village becomes the launchpad of a knight-errant. A house, a nag, old armor, and a new name are enough to transform the world.",
-      "readingQuestion": "Why would Cervantes begin by withholding the exact place?",
       "mapPosition": { "x": 42, "y": 43 }
     },
     {
@@ -18,12 +17,11 @@
       "name": "Campo de Montiel",
       "coordinates": { "lat": 38.6967, "lng": -2.9712 },
       "chapter": "Part I, Chapter 2",
-      "sally": "First sally",
+      "journey": "First journey",
       "episode": "The first ride across La Mancha.",
       "connection": "Campo de Montiel is explicitly named as the route of Don Quixote's first departure. The empty plain is less a romantic kingdom than a hot, exposed landscape where his imagination has to work overtime.",
       "reality": "Heat, distance, and hunger immediately undercut the heroic script. The landscape is recognizable and stubbornly material.",
       "quixoteView": "Every road is the beginning of fame. If no adventure appears, the knight's duty is to interpret the road until one does.",
-      "readingQuestion": "How does emptiness become adventure?",
       "mapPosition": { "x": 48, "y": 58 }
     },
     {
@@ -31,12 +29,11 @@
       "name": "La Mancha inn",
       "coordinates": { "lat": 39.0, "lng": -3.2 },
       "chapter": "Part I, Chapters 2-3",
-      "sally": "First sally",
+      "journey": "First journey",
       "episode": "Don Quixote is dubbed knight at an inn.",
       "connection": "The exact inn is not identified. That uncertainty is useful: the episode works because any roadside inn can become a castle once Don Quixote brings the right genre to it.",
       "reality": "The innkeeper humors a dangerous fantasy because it is easier than confronting it. Practical people improvise around Don Quixote's script.",
       "quixoteView": "The inn is a castle, the innkeeper is a lord, and a hurried ceremony is enough to authorize the quest.",
-      "readingQuestion": "Who is really controlling the scene: the dreamer or the people playing along?",
       "mapPosition": { "x": 44, "y": 50 }
     },
     {
@@ -44,12 +41,11 @@
       "name": "Campo de Criptana windmills",
       "coordinates": { "lat": 39.4032, "lng": -3.1254 },
       "chapter": "Part I, Chapter 8",
-      "sally": "Second sally",
+      "journey": "Second journey",
       "episode": "The windmills become giants.",
       "connection": "Cervantes describes a plain with roughly thirty windmills, not a named town. Campo de Criptana is a traditional and widely promoted candidate because of its historic windmill landscape.",
       "reality": "Sancho reads the machines correctly: wind turns sails, sails turn millstones, and a charging body will lose.",
       "quixoteView": "The giants are real enough to require courage. After the fall, enchantment explains why victory has been stolen.",
-      "readingQuestion": "What does Don Quixote gain by losing so publicly?",
       "mapPosition": { "x": 44, "y": 39 }
     },
     {
@@ -57,12 +53,11 @@
       "name": "Puerto Lápice",
       "coordinates": { "lat": 39.3249, "lng": -3.4831 },
       "chapter": "Part I, Chapters 8-9",
-      "sally": "Second sally",
+      "journey": "Second journey",
       "episode": "Friars, a coach, and the Basque squire.",
       "connection": "Puerto Lápice is associated with the road episode after the windmills. Its crossroads setting matters more than exact cartography: traffic creates misread encounters.",
       "reality": "Travelers are travelers, friars are friars, and violence spreads fast when a fantasy imposes itself on strangers.",
       "quixoteView": "A coach becomes a captive-princess plot, and the road becomes the stage for chivalric rescue.",
-      "readingQuestion": "Why do roads make Don Quixote's mistakes more dangerous?",
       "mapPosition": { "x": 36, "y": 46 }
     },
     {
@@ -70,12 +65,11 @@
       "name": "Sierra Morena",
       "coordinates": { "lat": 38.3122, "lng": -4.0049 },
       "chapter": "Part I, Chapters 23-30",
-      "sally": "Second sally",
+      "journey": "Second journey",
       "episode": "Flight, penance, Cardenio, and the return plot.",
       "connection": "The mountains give Part I its wild middle: galley slaves, fear of the Holy Brotherhood, Cardenio's story, and Don Quixote's staged penance all converge there.",
       "reality": "The mountains are a hiding place for people hurt by law, love, and poverty. Other people's stories start crowding Don Quixote's own.",
       "quixoteView": "The wilderness is the correct literary setting for suffering nobly in imitation of romance heroes.",
-      "readingQuestion": "What changes when other wounded stories enter the adventure?",
       "mapPosition": { "x": 29, "y": 67 }
     },
     {
@@ -83,12 +77,11 @@
       "name": "El Toboso",
       "coordinates": { "lat": 39.5105, "lng": -2.9975 },
       "chapter": "Part II, Chapters 9-10",
-      "sally": "Third sally",
+      "journey": "Third journey",
       "episode": "The search for Dulcinea becomes an enchantment problem.",
       "connection": "El Toboso is real; Dulcinea is Don Quixote's idealized invention built from Aldonza Lorenzo. In Part II, the attempt to find her forces Sancho to become an active maker of illusion.",
       "reality": "There is no palace and no courtly lady waiting. Sancho manages the crisis by turning ordinary peasant women into an enchantment story.",
       "quixoteView": "If Dulcinea appears ordinary, the fault must lie in hostile magic, not in the lady or the dream.",
-      "readingQuestion": "When Sancho invents an enchantment, is he protecting Don Quixote or becoming like him?",
       "mapPosition": { "x": 49, "y": 34 }
     },
     {
@@ -96,12 +89,11 @@
       "name": "Cave of Montesinos",
       "coordinates": { "lat": 38.9365, "lng": -2.8748 },
       "chapter": "Part II, Chapters 22-23",
-      "sally": "Third sally",
+      "journey": "Third journey",
       "episode": "Don Quixote descends into a cave and returns with a vision.",
       "connection": "The Cave of Montesinos, near Ossa de Montiel and the Ruidera lakes, is one of Part II's strangest episodes. The adventure turns inward: no one else can verify what Don Quixote claims to have seen.",
       "reality": "A cave, a rope, and a sleeping or stunned body create the conditions for a private narrative that cannot be checked.",
       "quixoteView": "The cave reveals an enchanted underworld where legendary figures and Dulcinea's fate become part of his mission.",
-      "readingQuestion": "How should readers judge an adventure that may have happened only in narration?",
       "mapPosition": { "x": 54, "y": 57 }
     },
     {
@@ -109,12 +101,11 @@
       "name": "Barcelona",
       "coordinates": { "lat": 41.3874, "lng": 2.1686 },
       "chapter": "Part II, Chapters 61-65",
-      "sally": "Third sally",
+      "journey": "Third journey",
       "episode": "Printing presses, the sea, and the Knight of the White Moon.",
       "connection": "Barcelona is the novel's great urban destination. Don Quixote encounters print culture, public spectacle, and finally defeat by the Knight of the White Moon, who forces him to return home.",
       "reality": "The city exposes Don Quixote to readers, printers, and spectators who already know his story. His identity has become public property.",
       "quixoteView": "Even defeat can be folded into knightly honor, but the vow to leave arms for a year breaks the performance.",
-      "readingQuestion": "Why does Cervantes bring the fantasy to a real, modern city before ending it?",
       "mapPosition": { "x": 86, "y": 30 }
     }
   ]

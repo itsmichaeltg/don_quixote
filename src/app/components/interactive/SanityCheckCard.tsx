@@ -66,7 +66,7 @@ export function SanityCheckCard({
                 <p className="text-sm font-semibold text-primary">Chapter 6 verdict</p>
                 <p className="mt-2 text-2xl font-semibold">{verdict}</p>
               </div>
-              <div className="min-w-48">
+              {/* <div className="min-w-48">
                 <div className="mb-2 flex items-center justify-between text-xs text-muted-foreground">
                   <span>Reading risk</span>
                   <span>{dangerLevel}%</span>
@@ -77,7 +77,7 @@ export function SanityCheckCard({
                     style={{ width: `${Math.min(100, Math.max(0, dangerLevel))}%` }}
                   />
                 </div>
-              </div>
+              </div> */}
             </div>
             <p className="mt-4 leading-relaxed text-muted-foreground">{chapterVerdict}</p>
           </motion.div>
@@ -110,7 +110,7 @@ export function SanityCheckCard({
             </motion.section>
           </div>
 
-          <div className="grid gap-4 md:grid-cols-[1fr_0.85fr]">
+          {/* <div className="grid gap-4 md:grid-cols-[1fr_0.85fr]">
             <div className="rounded-lg border bg-background p-4">
               <p className="mb-2 flex items-center gap-2 text-sm font-semibold text-primary">
                 <HelpCircle className="h-4 w-4" />
@@ -127,7 +127,7 @@ export function SanityCheckCard({
                 {mode === 'truth' ? sourceNote : 'Romance mode keeps the interpretive play, but this note flags what the factual anchor is.'}
               </p>
             </div>
-          </div>
+          </div> */}
         </div>
       </DialogContent>
     </Dialog>
